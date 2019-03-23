@@ -1,0 +1,14 @@
+{
+  "name": "entrega1",
+  "version": "1.0.1",
+  "description": "imprimir resultados en el navegador de un registro de un curso de la TdeA",
+  "main": "cursos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julian David - jdtintinago@uqvirtual.edu.co",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^13.2.2"
+  }
+}
