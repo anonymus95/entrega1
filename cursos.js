@@ -1,4 +1,12 @@
 
+//código de express para corre en el navegador
+const express = require('express')
+const app = express()
+
+app.listen(3000)
+
+//fin
+
 //Opciones para ingresar datos del estudiante
 const opciones={
     id:{
@@ -42,8 +50,6 @@ let cursos=[
 //modulo yargs para entrada de parametros desde consola
 const argv=require('yargs').command('inscribir','Inscribir a un estudiante a un curso',opciones).argv
 
-//modulo para generar archivos
-const fs=require('fs')
 
 //Solo entra al if, si el estudiante toma la opción de inscribirse al curso
 if(argv.i !=null){
@@ -55,12 +61,11 @@ if(argv.i !=null){
     let inscribir= (curso)=>{
         
         //variable que contiene la informacion del curso y estudiante a inscribirse
-        texto = `El(La) estudiante ${argv.n} con cedula ${argv.c}:\nSe ha prematriculado en el curso llamado\n${curso.nombre} tiene una duración de ${curso.duracion} horas y un valor de ${curso.valor} pesos`
+        texto = `El(La) estudiante ${argv.n} con cedula ${argv.c}:<br>Se ha prematriculado en el curso llamado\n${curso.nombre} tiene una duración de ${curso.duracion} horas y un valor de ${curso.valor} pesos`
 
         //Guarda la información en el archivo 'prematricula.txt' 
-        fs.writeFile('prematricula.txt',texto, (err)=>{
-            if(err) throw (err)
-            console.log('se ha creado el archivo')
+        app.get('/', function(req,res){
+            res.send(texto)
         })
     }
 
@@ -70,7 +75,9 @@ if(argv.i !=null){
     }
     else{
         //caso contrario muestra un mensaje de alerta
-        console.log(`El curso con id ${argv.i} no se encontro en la oferta `)
+        app.get('/', function(req,res){
+            res.send(`<p style="color:red;">El curso con id ${argv.i} no se encontro en la oferta </p>`)
+        })
     }
 
 }

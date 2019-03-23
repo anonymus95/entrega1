@@ -9,6 +9,7 @@
   "author": "Julian David - jdtintinago@uqvirtual.edu.co",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.4",
     "yargs": "^13.2.2"
   }
 }
